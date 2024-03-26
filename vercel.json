@@ -4,9 +4,9 @@
     { "src": "server.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/auth/signup", "dest": "signup.js" },
-    { "src": "/auth/login", "dest": "login.js" },
-    { "src": "/modals/post", "dest": "post.js" },
+    { "src": "/api/auth/signup", "dest": "./routes/authRoutes.js" },
+    { "src": "/api/auth/login", "dest": "./routes/authRoutes.js" },
+    { "src": "/api/post", "dest": "./routes/postRoutes.js" },
     { "src": "/(.*)", "dest": "server.js" }
   ]
 }
