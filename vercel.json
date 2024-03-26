@@ -1,17 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "yarn" }
+    { "src": "server.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/api/auth/signup", "dest": "./routes/authRoutes.js" },
-    { "src": "/api/auth/login", "dest": "./routes/authRoutes.js" },
-    { "src": "/api/post", "dest": "./routes/postRoutes.js" },
-    { "src": "/(.*)", "dest": "server.js" }
-  ],
-  "functions": {
-    "api/*": {
-      "runtime": "yarn"
-    }
+  "functions": { "api/*": { "runtime": "yarn@1.x" } },
+  "env": {
+    "NODE_VERSION": "14.x"
   }
 }
