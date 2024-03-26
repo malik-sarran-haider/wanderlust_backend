@@ -3,8 +3,10 @@
   "builds": [
     { "src": "server.js", "use": "@vercel/node" }
   ],
-  "functions": { "api/*": { "runtime": "yarn@1.x" } },
-  "env": {
-    "NODE_VERSION": "14.x"
-  }
+  "routes": [
+    { "src": "/auth/signup", "dest": "signup.js" },
+    { "src": "/auth/login", "dest": "login.js" },
+    { "src": "/modals/post", "dest": "post.js" },
+    { "src": "/(.*)", "dest": "server.js" }
+  ]
 }
