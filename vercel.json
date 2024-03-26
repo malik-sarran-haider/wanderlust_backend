@@ -1,12 +1,17 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    { "src": "server.js", "use": "yarn" }
   ],
   "routes": [
     { "src": "/api/auth/signup", "dest": "./routes/authRoutes.js" },
     { "src": "/api/auth/login", "dest": "./routes/authRoutes.js" },
     { "src": "/api/post", "dest": "./routes/postRoutes.js" },
     { "src": "/(.*)", "dest": "server.js" }
-  ]
+  ],
+  "functions": {
+    "api/*": {
+      "runtime": "yarn"
+    }
+  }
 }
