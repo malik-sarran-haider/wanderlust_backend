@@ -28,7 +28,7 @@ const signUp = async (req, res) => {
     res.status(201).json({ success: true });
   } catch (error) {
     console.error('Error signing up user:', error);
-    res.status(500).json({ error: 'Server Error' });
+    res.status(500).json({ error: error.message }); // Send the error message back to the client
   }
 };
 
@@ -67,7 +67,7 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error('Error logging in user:', error);
-    res.status(500).json({ error: 'Server Error' });
+    res.status(500).json({ error: error.message }); // Send the error message back to the client
   }
 };
 
