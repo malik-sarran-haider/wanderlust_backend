@@ -67,9 +67,10 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error('Error logging in user:', error);
-    res.status(500).json({ error: error.message }); // Send the error message back to the client
+    res.status(500).json({ error: 'Server Error' });
   }
 };
+
 
 module.exports = {
   signUp,
