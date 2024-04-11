@@ -35,27 +35,21 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if the user exists
     let user = await User.findOne({ email });
 
     if (!user) {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
-
-    // Check if the password is correct
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
-
-    // Send user data in the response (excluding sensitive fields like password)
     const sanitizedUser = {
-      id: user._id, // Assuming your User model has an _id property
+      id: user._id, 
       username: user.username,
       email: user.email,
-      profession: user.profession, // Assuming you have a profession property
-      // ... other non-sensitive user data
+      profession: user.profession, 
     };
 
     res.status(200).json({ success: 'true', user: sanitizedUser });

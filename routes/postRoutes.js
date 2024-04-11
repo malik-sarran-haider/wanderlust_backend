@@ -1,9 +1,9 @@
 const express = require('express');
-const postController = require('../controllers/PostController'); // Corrected import
+const postController = require('../controllers/PostController');
 
 const router = express.Router();
 
 // Route to handle post creation
-router.post('/:userId', postController.Post);
+router.post('/', postController.createPost); // Update to use createPost
 
 module.exports = router;
