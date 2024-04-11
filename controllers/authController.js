@@ -49,7 +49,7 @@ const login = async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    res.status(200).json({ message: 'Login successful' });
+    res.status(200).json({ success: 'true' });
   } catch (error) {
     console.error('Error logging in user:', error);
     res.status(500).json({ error: 'Server Error' });
