@@ -49,12 +49,22 @@ const login = async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    res.status(200).json({ success: 'true' });
+    // Send user data in the response (excluding sensitive fields like password)
+    const sanitizedUser = {
+      id: user._id, // Assuming your User model has an _id property
+      username: user.username,
+      email: user.email,
+      profession: user.profession, // Assuming you have a profession property
+      // ... other non-sensitive user data
+    };
+
+    res.status(200).json({ success: 'true', user: sanitizedUser });
   } catch (error) {
     console.error('Error logging in user:', error);
     res.status(500).json({ error: 'Server Error' });
   }
 };
+
 
 module.exports = {
   signUp,
